@@ -7,17 +7,22 @@
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
 
 
 </head>
 <body>
-    <header>
+    <header class="container">
     <a href="{% url 'index' %}">
-        <img src="https://papik.pro/uploads/posts/2023-02/1675785267_papik-pro-p-kukhonnaya-utvar-risunok-15.png" alt="Logo" width="200px" height="100px">
+        <span class="logo fs-2 text-decoration-none">Сайт рецептов</span>
     </a>
         <nav class="nav justify-content-center">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
+            <a class="nav-link" href="{% url 'first_dishes' %}">Рецепты первых блюд</a>
+            <a class="nav-link" href="{% url 'second_dishes' %}">Рецепты вторых блюд</a>
+            <a class="nav-link" href="{% url 'snacks_dishes' %}">Рецепты закусок</a>
+            <a class="nav-link" href="{% url 'drink_recipes' %}">Рецепты напитков</a>
+            <a class="nav-link" href="{% url 'sauce_recipes' %}">Рецепты соусов</a>
+            <a class="nav-link" href="{% url 'index' %}">Лучшие рецепты</a>
+            <a class="nav-link" href="{% url 'index' %}">Добавить рецепт</a>
         </nav>
     <header>
     {% block content %}
@@ -26,7 +31,7 @@
 
     {% endblock %}
     <footer>
-      <p>Курс по Django. Давыдов Денис Викторович.</p>
+      <p>Сайт рецептов на Django. Давыдов Денис Викторович. 2024</p>
     </footer>
 </body>
 </html>
