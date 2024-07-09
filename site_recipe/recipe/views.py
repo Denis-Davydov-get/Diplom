@@ -1,22 +1,24 @@
 import logging
-
-from django.http import HttpResponse
 from django.shortcuts import render
+
+from recipe.models import Recipe
 
 logger = logging.getLogger(__name__)
 
 
 def index(request):
     logger.info(msg="")
-    return render(request, "recipe/index.html", {"title": "Homepage"})
+    return render(request, "recipe/index.html", {"title": "Рецепты популярных блюд"})
 
 
 def first_dishes(request):
     """Рецепты первых блюд"""
     logger.info(msg="")
+    all_categories = Recipe.display_categories()
     return render(request,
                   "recipe/first_dishes.html",
-                  {"title": "Рецепты первых блюд"})
+                  {"title": "Рецепты первых блюд",
+                   "context": all_categories})
 
 
 def second_dishes(request):

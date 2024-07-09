@@ -4,11 +4,12 @@ from django.contrib.auth.models import User
 
 
 class Category(models.Model):
+    """Класс для создания модели категория рецепта."""
     name = models.CharField(max_length=50, unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('-date_added',)
 
     def __str__(self):
         return (f'Название категории - {self.name},'
@@ -16,6 +17,7 @@ class Category(models.Model):
 
 
 class Ingredients(models.Model):
+    """Класс для создания модели ингридиент."""
     name = models.CharField(max_length=50, unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -25,6 +27,7 @@ class Ingredients(models.Model):
 
 
 class Recipe(models.Model):
+    """Класс для создания модели рецепт."""
     title = models.CharField(max_length=50, unique=True)
     description = models.TextField()
     ingredients = models.ManyToManyField(Ingredients)
@@ -48,11 +51,22 @@ class Recipe(models.Model):
         ordering = ('-views',)
 
     def display_categories(self):
+        """Функция для вывода всех категорий."""
         return ', '.join([category.name for category in self.categories.all()])
 
     display_categories.short_description = 'Категории рецептов'
 
     def display_ingredients(self):
+        """Функция для вывода всех ингридиентов."""
         return ', '.join([ingredient.name for ingredient in self.ingredients.all()])
 
     display_ingredients.short_description = 'Ингридиенты'
+
+
+class User(models.Model):
+    """Класс для создания модели пользователь."""
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    password = models.CharField(max_length=100)
+
+
