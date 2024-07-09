@@ -1,7 +1,7 @@
 import logging
 from django.shortcuts import render
 
-from recipe.models import Recipe
+from recipe.models import Recipe, Category
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ def index(request):
 def first_dishes(request):
     """Рецепты первых блюд"""
     logger.info(msg="")
-    all_categories = Recipe.display_categories()
+    all_categories = Category.objects.all()
     return render(request,
                   "recipe/first_dishes.html",
                   {"title": "Рецепты первых блюд",

@@ -6,6 +6,14 @@
 
 {% block content %}
 <div class="container">
-<h1>{{ title }}</h1>
+    <h1>{{ title }}</h1>
+    <ul>
+    {% for category in all_categories%}
+         <li>
+            name - {{ category.name }}.<br>
+            date_added - {{category.date_added}}.<br>
+        </li>
+    {% endfor %}
+    </ul>
 </div>
 {% endblock %}
