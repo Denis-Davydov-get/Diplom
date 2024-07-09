@@ -52,7 +52,7 @@ class Recipe(models.Model):
 
     def display_categories(self):
         """Функция для вывода всех категорий."""
-        return ', '.join([category.name for category in self.categories.all()])
+        return ', '.join([category.name for category in Recipe.objects.all()])
 
     display_categories.short_description = 'Категории рецептов'
 
@@ -68,5 +68,6 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
+
 
 
