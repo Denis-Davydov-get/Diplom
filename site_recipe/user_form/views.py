@@ -38,7 +38,7 @@ def add_category(request):
         form = CategoryForm()
         message = 'Заполните форму'
     return render(request,
-                  'user_form/category_form.html',
+                  'users/category_form.html',
                   {'form': form, 'message': message})
 
 
