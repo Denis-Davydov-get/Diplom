@@ -19,6 +19,7 @@ class Category(models.Model):
 class Ingredients(models.Model):
     """Класс для создания модели ингридиент."""
     name = models.CharField(max_length=50, unique=True)
+    quantity = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

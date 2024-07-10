@@ -30,7 +30,8 @@ class RecipeForm(forms.Form):
     ingredients = forms.MultipleChoiceField(
         required=False,
         widget=forms.CheckboxSelectMultiple,
-        choices=[', '.join([ingredient.name for ingredient in Ingredients.objects.all()])]
+        choices=Ingredients.objects.all()
+
     )
     categories = forms.MultipleChoiceField(
         required=False,
