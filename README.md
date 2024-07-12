@@ -3,7 +3,7 @@
 ## Инструменты разработки
 
 1. Python 3.11
-2. Django
+2. Django 5.0.6
 3. Дополнительные пакеты для разработки в
    файле [requirements.txt](https://github.com/Denis-Davydov-get/Diplom/blob/main/requirements.txt)
 

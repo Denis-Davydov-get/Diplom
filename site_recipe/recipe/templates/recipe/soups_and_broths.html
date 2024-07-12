@@ -8,10 +8,9 @@
 <div class="container">
     <h1>{{ title }}</h1>
     <ul>
-    {% for category in all_categories%}
+    {% for recipe in all_recipe_soups_and_broths %}
          <li>
-            name - {{ category.name }}.<br>
-            date_added - {{category.date_added}}.<br>
+             {{ recipe.title }}<br>
         </li>
     {% endfor %}
     </ul>

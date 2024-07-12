@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{%endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ title }}</h1>
+    <ul>
+    {% for recipe in all_recipe %}
+         <li>
+            <a href="{% url 'recipe' recipe.id %}" {{ recipe.title }}> </a> {{ recipe.title }}<br>
+            description - {{ recipe.description }}.<br>
+            ingredients - {{ recipe.ingredients }}.<br>
+            categories - {{ recipe.categories }}.<br>
+            photo - {{ recipe.photo }}.<br>
+            author - {{ recipe.author }}.<br>
+            views - {{ recipe.views + 1 }}.<br>
+            date_added - {{ recipe.date_added }}.<br>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

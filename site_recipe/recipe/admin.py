@@ -4,8 +4,6 @@ from recipe.models import Category, Ingredients, Recipe, User
 
 
 @admin.action(description="Сбросить количество в ноль")
-
-
 def reset_quantity(modeladmin, request, queryset):
     queryset.update(quantity=0)
 
@@ -15,6 +13,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ['name', "date_added"]
 
 
+
+
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ['title',
                     "views",
@@ -22,7 +22,7 @@ class RecipeAdmin(admin.ModelAdmin):
                     "date_updated"
                     ]
     ordering = ['date_added', '-date_updated']
-    list_filter = ['title', 'views', "date_added", "date_updated"]
+    list_filter = ['title', 'views', "date_added", "date_updated", "categories"]
 
 
 class IngredientsAdmin(admin.ModelAdmin):

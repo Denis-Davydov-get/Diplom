@@ -1,53 +1,47 @@
 import logging
-from django.shortcuts import render
 
-from recipe.models import Recipe, Category
+from django.shortcuts import render, get_object_or_404
+from recipe.models import Category, Recipe
 
 logger = logging.getLogger(__name__)
 
 
 def index(request):
     logger.info(msg="")
-    return render(request, "recipe/index.html", {"title": "Рецепты популярных блюд"})
-
-
-def first_dishes(request):
-    """Рецепты первых блюд"""
-    logger.info(msg="")
-    all_categories = Category.objects.all()
+    all_recipe = Recipe.objects.all()
     return render(request,
-                  "recipe/first_dishes.html",
-                  {"title": "Рецепты первых блюд",
-                   "context": all_categories})
+                  "recipe/index.html",
+                  {"title": "Все рецепты",
+                   "all_recipe": all_recipe})
 
 
-def second_dishes(request):
-    """Рецепты вторых блюд"""
-    logger.info(msg="")
+def soups_and_broths(request):
+    """Рецепты супов и бульонов"""
+    logger.info(msg="Рецепты супов и бульонов")
+    all_recipe_soups_and_broths = Recipe.objects.all()
     return render(request,
-                  "recipe/second_dishes.html",
-                  {"title": "Рецепты вторых блюд"})
+                  "recipe/soups_and_broths.html",
+                  {"title": "Рецепты супов и бульонов",
+                   "all_recipe_soups_and_broths": all_recipe_soups_and_broths})
 
 
-def snacks_dishes(request):
-    """Рецепты закусок"""
-    logger.info(msg="")
+def hot_dishes(request):
+    """Рецепты горячих блюд"""
+    logger.info(msg="Рецепты горячих блюд")
+    all_recipe_hot_dishes = Recipe.objects.all()
     return render(request,
-                  "recipe/snacks_dishes.html",
-                  {"title": "Рецепты закусок"})
+                  "recipe/hot_dishes.html",
+                  {"title": "Рецепты горячих блюд",
+                   "all_recipe_hot_dishes": all_recipe_hot_dishes})
 
 
-def drink_recipes(request):
-    """Рецепты напитков"""
-    logger.info(msg="")
+def salad_recipes(request):
+    """Рецепты салатов"""
+    logger.info(msg="Рецепты салатов")
+    all_recipe_salad_recipes = Recipe.objects.all()
     return render(request,
-                  "recipe/drink_recipes.html",
-                  {"title": "Рецепты напитков"})
+                  "recipe/salad_recipe.html",
+                  {"title": "Рецепты салатов",
+                   "all_recipe_salad_recipes": all_recipe_salad_recipes})
 
 
-def sauce_recipes(request):
-    """Рецепты соусов"""
-    logger.info(msg="")
-    return render(request,
-                  "recipe/sauce_recipes.html",
-                  {"title": "Рецепты соусов"})

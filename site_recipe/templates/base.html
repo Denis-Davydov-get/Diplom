@@ -16,12 +16,11 @@
         <span class="logo fs-2 text-decoration-none">Сайт рецептов</span>
     </a>
         <nav class="nav justify-content-center">
-            <a class="nav-link" href="{% url 'first_dishes' %}">Все рецепты</a>
-            <a class="nav-link" href="{% url 'second_dishes' %}">Свежие рецепты</a>
-            <a class="nav-link" href="{% url 'snacks_dishes' %}">Бульоны и супы</a>
-            <a class="nav-link" href="{% url 'drink_recipes' %}">Горячие блюда</a>
-            <a class="nav-link" href="{% url 'sauce_recipes' %}">Салаты</a>
-            <a class="nav-link" href="{% url 'index' %}">Добавить рецепт</a>
+            <a class="nav-link" href="{% url 'index' %}">Главная</a>
+            <a class="nav-link" href="{% url 'soups_and_broths' %}">Бульоны и супы</a>
+            <a class="nav-link" href="{% url 'hot_dishes' %}">Горячие блюда</a>
+            <a class="nav-link" href="{% url 'salad_recipe' %}">Салаты</a>
+<!--            <a class="nav-link" href="{% url 'index' %}">Добавить рецепт</a>-->
         </nav>
     <header>
     {% block content %}
