@@ -18,7 +18,7 @@ def index(request):
 def soups_and_broths(request):
     """Рецепты супов и бульонов"""
     logger.info(msg="Рецепты супов и бульонов")
-    all_recipe_soups_and_broths = Recipe.objects.all()
+    all_recipe_soups_and_broths = Recipe.objects.filter(categories=1)
     return render(request,
                   "recipe/soups_and_broths.html",
                   {"title": "Рецепты супов и бульонов",
@@ -28,7 +28,7 @@ def soups_and_broths(request):
 def hot_dishes(request):
     """Рецепты горячих блюд"""
     logger.info(msg="Рецепты горячих блюд")
-    all_recipe_hot_dishes = Recipe.objects.all()
+    all_recipe_hot_dishes = Recipe.objects.filter(categories=2)
     return render(request,
                   "recipe/hot_dishes.html",
                   {"title": "Рецепты горячих блюд",
@@ -38,7 +38,7 @@ def hot_dishes(request):
 def salad_recipes(request):
     """Рецепты салатов"""
     logger.info(msg="Рецепты салатов")
-    all_recipe_salad_recipes = Recipe.objects.all()
+    all_recipe_salad_recipes = Recipe.objects.filter(categories=3)
     return render(request,
                   "recipe/salad_recipe.html",
                   {"title": "Рецепты салатов",

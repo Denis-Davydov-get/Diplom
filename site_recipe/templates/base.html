@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 
@@ -7,29 +8,33 @@
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
-
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="container">
+<div class="container">
     <a href="{% url 'index' %}" class="text-decoration-none">
-        <span class="logo fs-2 text-decoration-none">Сайт рецептов</span>
+        <span class="logo fs-1 text-decoration-none">Сайт рецептов</span>
     </a>
+    <div class="container header-nav">
+
         <nav class="nav justify-content-center">
             <a class="nav-link" href="{% url 'index' %}">Главная</a>
             <a class="nav-link" href="{% url 'soups_and_broths' %}">Бульоны и супы</a>
             <a class="nav-link" href="{% url 'hot_dishes' %}">Горячие блюда</a>
             <a class="nav-link" href="{% url 'salad_recipe' %}">Салаты</a>
-<!--            <a class="nav-link" href="{% url 'index' %}">Добавить рецепт</a>-->
+
         </nav>
+        <div class="nav justify-content-right">
+            <a class="nav-link" href="{% url 'login' %}">Вход</a>
+        </div>
+    </div>
     <header>
-    {% block content %}
+        {% block content %}
 
 
-
-    {% endblock %}
-    <footer>
-      <p>Сайт рецептов на Django. Давыдов Денис Викторович. 2024</p>
-    </footer>
+        {% endblock %}
+        <footer>
+            <p>Сайт рецептов на Django. Давыдов Денис Викторович. 2024</p>
+        </footer>
 </body>
 </html>
