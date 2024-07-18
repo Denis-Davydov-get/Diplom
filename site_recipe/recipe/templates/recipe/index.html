@@ -7,13 +7,18 @@
 {% block content %}
 <div class="container">
     <h1>{{ title }}</h1>
+    <div class="container">
     <ul>
         {% for recipe in all_recipe %}
         <li>
-            {{ recipe.title }}
+            <a href="{% url 'get_recipe' recipe.id %}">
+             <h3 class="text-center">{{ recipe.title }}</h3>
+            <img src="{{ recipe.photo.url }}" width="300px" class="rounded mx-auto d-block">
+            </a>
         </li>
         {% endfor %}
     </ul>
+        </div>
 
 </div>
 {% endblock %}

@@ -1,18 +1,16 @@
 from django.contrib import admin
 
-from recipe.models import Category, Ingredients, Recipe, User
+from .models import Category, Ingredients, Recipe, User
 
 
 @admin.action(description="Сбросить количество в ноль")
-def reset_quantity(modeladmin, request, queryset):
+def reset_quantity(queryset):
     queryset.update(quantity=0)
 
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'date_added']
     list_filter = ['name', "date_added"]
-
-
 
 
 class RecipeAdmin(admin.ModelAdmin):
