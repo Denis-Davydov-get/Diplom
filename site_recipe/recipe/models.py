@@ -53,7 +53,7 @@ class Recipe(models.Model):
 
     def display_categories(self):
         """Функция для вывода всех категорий."""
-        return ', '.join([category.name for category in Recipe.objects.all()])
+        return ', '.join([category.name for category in self.categories.all()])
 
     display_categories.short_description = 'Категории рецептов'
 

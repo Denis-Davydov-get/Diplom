@@ -8,18 +8,19 @@
 <div class="container">
     <h1>{{ title }}</h1>
     <ul>
-    {% for recipe in all_recipe %}
          <li>
-            <a href="{% url 'recipe' recipe.id %}" {{ recipe.title }}> </a> {{ recipe.title }}<br>
-            description - {{ recipe.description }}.<br>
-            ingredients - {{ recipe.ingredients }}.<br>
-            categories - {{ recipe.categories }}.<br>
-            photo - {{ recipe.photo }}.<br>
-            author - {{ recipe.author }}.<br>
-            views - {{ recipe.views + 1 }}.<br>
-            date_added - {{ recipe.date_added }}.<br>
+            <h3>{{ recipe.title }}</h3>
+             <p>Дата добавления: {{ recipe.date_added }}</p><br>
+             <p>Кол-во просмотров: {{ recipe.views }}</p><br>
+             <p>Категория: {{ recipe.display_categories }}</p><br>
+            <p>Автор рецепта: {{ recipe.author }}</p><br>
+             <img src="{{ recipe.photo.url }}" width="300px" class="rounded mx-auto d-block">
+             <p> Описание: {{ recipe.description }}</p><br>
+            <p>Ингридиенты:{{ recipe.display_ingredients }}</p><br>
+
+
+
         </li>
-    {% endfor %}
     </ul>
 </div>
 {% endblock %}

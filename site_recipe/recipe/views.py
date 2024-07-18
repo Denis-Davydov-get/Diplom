@@ -1,5 +1,6 @@
 import logging
 
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from recipe.models import Category, Recipe
 
@@ -43,5 +44,15 @@ def salad_recipes(request):
                   "recipe/salad_recipe.html",
                   {"title": "Рецепты салатов",
                    "all_recipe_salad_recipes": all_recipe_salad_recipes})
+
+
+def get_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    logger.info(msg=f"Запрошен рецепт {recipe.title}")
+    recipe.views += 1
+    recipe.save()
+    return render(request,
+                  "recipe/recipe.html",
+                  {"recipe": recipe})
 
 
