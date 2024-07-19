@@ -9,3 +9,11 @@
 ul > li{
     list-style-type: none;
 }
+.link{
+    text-decoration:none;
+}
+
+.user-login{
+    display: flex;
+    justify-content: flex-end;
+}
