@@ -6,7 +6,12 @@ class ImageForm(forms.Form):
 
 
 # форма создания новго товара
-class UserForm(forms.Form):
+class UserRegistrationForm(forms.Form):
     name = forms.CharField(label="Имя")
     email = forms.EmailField(label='Your email address', max_length=50)
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
+class UserLoginForm(forms.Form):
+    name = forms.CharField(label="Имя")
     password = forms.CharField(widget=forms.PasswordInput)

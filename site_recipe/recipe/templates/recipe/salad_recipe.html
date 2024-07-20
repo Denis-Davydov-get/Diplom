@@ -11,7 +11,9 @@
     <ul class="list-inline">
         {% for recipe in all_recipe_salad_recipes %}
         <li>
-             <h3 class="text-center">{{ recipe.title }}</h3>
+             <h3 class="text-center">
+                 <a href="{% url 'get_recipe' recipe.id %}" class="link">{{ recipe.title }}</a>
+             </h3>
             <img src="{{ recipe.photo.url }}" width="300px" class="rounded mx-auto d-block">
         </li>
         {% endfor %}
