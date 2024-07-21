@@ -55,19 +55,20 @@ def get_user(request, user_id):
 
 def add_recipe(request):
     if request.method == "POST":
-        form = NewRecipe(request.POST)
-        if form.is_valid():
+        form_new_ricipe = NewRecipe(request.POST)
+        if form_new_ricipe.is_valid():
             new_recipe = Recipe(
-                title=form.cleaned_data["title"],
-                description=form.cleaned_data["description"],
-                ingredients=form.cleaned_data["ingredients"],
-                categories=form.cleaned_data["categories"],
-                photo=form.cleaned_data["photo"])
+                title=form_new_ricipe.cleaned_data["title"],
+                description=form_new_ricipe.cleaned_data["description"],
+                ingredients_name=form_new_ricipe.cleaned_data["ingredients_name"],
+                ingredients_quantity=form_new_ricipe.cleaned_data["ingredients_quantity"],
+                categories=form_new_ricipe.cleaned_data["categories"],
+                photo=form_new_ricipe.cleaned_data["photo"])
             new_recipe.save()
             return redirect(add_recipe)
     else:
-        form = NewRecipe()
+        form_new_ricipe = NewRecipe()
     return render(request,
                   "form_user/add_recipe.html",
                   {"title": "Добавить новый рецепт",
-                   "form": form})
+                   "form": form_new_ricipe})
