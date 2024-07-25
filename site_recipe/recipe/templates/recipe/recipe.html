@@ -1,26 +1,45 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    {{ title }}
-{%endblock %}
+{% block title %} {{ name }} {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>{{ title }}</h1>
-    <ul>
-         <li>
-            <h3>{{ recipe.title }}</h3>
-             <p>Дата добавления: {{ recipe.date_added }}</p><br>
-             <p>Кол-во просмотров: {{ recipe.views }}</p><br>
-             <p>Категория: {{ recipe.display_categories }}</p><br>
-            <p>Автор рецепта: {{ recipe.author }}</p><br>
-             <img src="{{ recipe.photo.url }}" width="300px" class="rounded mx-auto d-block">
-             <p> Описание: {{ recipe.description }}</p><br>
-            <p>Ингридиенты:{{ recipe.display_ingredients }}</p><br>
 
+<div class="card-group gap-3 mt-xl-5">
+    <div class="card" style="width: 25rem;">
+        {% if recipe.photo %}
+        <img src="{{ recipe.photo.url }}" class="card-img-top" alt="изображение" style="object-fit: contain; height: 30rem">
+        {% endif %}
+    </div>
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+            <h5 class="card-title"><b>{{ recipe.name }}</b> | <i>Автор</i>: {{ recipe.author }}</h5>
+            <h5 class="card-title"><i>Категории:</i> {{ recipe.display_categories }}</h5>
+            <h5 class="card-title"><i>Ингредиенты:</i> {{ recipe.display_ingredients }}</h5>
+            <h5 class="card-title"><i>Количество шагов:</i> {{ recipe.steps }}</h5>
+            <h5 class="card-title"><i>Время приготовления, мин:</i> {{ recipe.cooking_time }}</h5>
 
-
-        </li>
-    </ul>
+            <h5 class="card-title"><i>Количество просмотров:</i> {{ recipe.views }}</h5>
+            <h5 class="card-title"><i>Дата добавления:</i> {{ recipe.date_added }}</h5>
+            <h5 class="card-title"><i>Дата редактирования:</i> {{ recipe.date_updated }}</h5>
+            <p class="card-text"><b>Процесс приготовления:</b> {{ recipe.description }}</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'update_recipe' recipe.name %}"
+               class="hover:bg-yellow-300 hover:text-black btn btn-primary">Отредактировать рецепт</a>
+        </div>
+    </div>
 </div>
+</div>
+
+<!--    <div><b> Автор: </b></div>-->
+<!--    <div><b> Описание: </b>{{ recipe.description }}</div>-->
+<!--    <div><b> Ингредиенты: </b>{{ recipe.display_ingredients }}</div>-->
+<!--    <div><b> Категории: </b>{{ recipe.display_categories }}</div>-->
+<!--    {% if recipe.photo %}-->
+<!--    <div><b> Фото готового блюда: </b><p><img src="{{ recipe.photo.url }}" alt='изображение' width="300"></p></div>-->
+<!--    {% endif %}-->
+
+<!--<button><a href="{% url 'update_recipe' recipe.name %}">Отредактировать рецепт</a></button>-->
+
+
 {% endblock %}

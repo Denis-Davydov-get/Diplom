@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipe',
-    'form_user',
+    'userapp',
 ]
 
 MIDDLEWARE = [

@@ -19,8 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from recipe.views import index
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('recipe.urls')),
-    path('form/', include('form_user.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('recipe/', include('recipe.urls')),
+    path('users/', include('userapp.urls', namespace='userapp')),
+    path('', index),
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
+               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
