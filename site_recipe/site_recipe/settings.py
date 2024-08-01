@@ -13,28 +13,30 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-5+sb*x0)7b6s7p$dfs@zdl6(y(_noucr2od3t3hou8nc1dicum'
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 INTERNAL_IPS = [
     '127.0.0.1',
-    # 'denisdavydov.pythonanywhere.com',
+
 
 ]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'denisdavydov.pythonanywhere.com',
+    ]
 
 # Application definition
 
@@ -94,9 +96,7 @@ DATABASES = {
         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'denisdavydov.mysql.pythonanywhere-services.com',
         'OPTIONS': {
-            'init_command':
-                "SET NAMES 'utf8mb4';"
-                "SET sql_mode = 'STRICT_TRANS_TABLES'",
+            'init_command': "SET NAMES 'utf8mb4'; SET sql_mode = 'STRICT_TRANS_TABLES'",
             'charset': 'utf8mb4',
         },
     }
@@ -134,14 +134,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = BASE_DIR / 'static/'
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
